@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     AWS_URL: str
     AWS_ACCESS_KEY_ID: str
     AWS_SECRET_ACCESS_KEY: str
+    AWS_SSL: bool
+
+    S3_BUCKET_NAME: str
 
     API_DEBUG: bool = False
 

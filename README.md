@@ -70,6 +70,8 @@ backend:
 - `AWS_URL` - Адрес s3 хранилища (см. [Yandex Cloud Docs](https://cloud.yandex.ru/docs/iam/operations/sa/create-access-key))
 - `AWS_ACCESS_KEY_ID` - ID ключа доступа для s3 хранилища (см. [Yandex Cloud Docs](https://cloud.yandex.ru/docs/iam/operations/sa/create-access-key))
 - `AWS_SECRET_ACCESS_KEY` - ключ доступа для s3 хранилища (см. [Yandex Cloud Docs](https://cloud.yandex.ru/docs/iam/operations/sa/create-access-key))
+- `AWS_SSL` - Использование https для s3 хранилища (см. [Yandex Cloud Docs](https://cloud.yandex.ru/docs/iam/operations/sa/create-access-key))
+- `S3_BUCKET_NAME` - Наименования баккета s3 в приложении
 - `SMTP_HOST` - Хост SMTP сервера для работы с почтой
 - `SMTP_USER` - Админский email
 - `SMTP_PASSWORD` - Пароль smtp приложений для админского email

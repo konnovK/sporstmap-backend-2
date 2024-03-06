@@ -9,13 +9,12 @@ from settings import Settings
 class S3Service:
     def __init__(self, settings: Settings, bucket: str):
         self.settings = settings
-        if settings.AWS_ACCESS_KEY_ID is None or settings.AWS_SECRET_ACCESS_KEY is None:
-            logger.warning(f"[{os.getpid()}] FAILED SETUP S3 SERVICE.")
 
         session = boto3.session.Session()
         self.s3 = session.client(
             service_name='s3',
-            endpoint_url=settings.AWS_URL
+            endpoint_url=settings.AWS_URL,
+            use_ssl=settings.AWS_SSL
         )
 
         self.bucket = bucket
@@ -25,10 +24,6 @@ class S3Service:
     def s3_upload_bytes(self, data: bytes, key: str) -> str | None:
         """Загружает файл в бакет и возвращает ссылку на него, или None, если файл не загрузился"""
 
-        if self.settings.AWS_ACCESS_KEY_ID is None or self.settings.AWS_SECRET_ACCESS_KEY is None:
-            logger.debug(f"[{os.getpid()}] FAILED SETUP S3 SERVICE.")
-            logger.debug('YANDEX_OBJECT_STORAGE_KEY_ID is None or YANDEX_OBJECT_STORAGE_ACCESS_KEY is None')
-            return None
         try:
             res = self.s3.put_object(Bucket=self.bucket, Key=key, Body=data)
             logger.debug(res)

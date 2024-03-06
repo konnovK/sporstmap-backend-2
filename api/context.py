@@ -29,5 +29,5 @@ class AppContext:
         self.facility_enum_service = FacilityEnumService(async_session=self.db.async_session)
         self.email_service: EmailService = EmailService(async_session=self.db.async_session, settings=settings)
         self.excel_service: ExcelService = ExcelService(async_session=self.db.async_session)
-        self.s3_service: S3Service = S3Service(settings=settings, bucket='sportsmap.spb.ru')
+        self.s3_service: S3Service = S3Service(settings=settings, bucket=settings.S3_BUCKET_NAME)
         self.photo_service: PhotoService = PhotoService(async_session=self.db.async_session)
